@@ -43,7 +43,7 @@ public class Talento {
     private Origem origem;
 
     @Column(columnDefinition = " TEXT ", name = "pre_requisito_formatado")
-    private String preRequisitoFormatada;
+    private String preRequisitoFormatado;
 
     @Column(name = "pre_requisito", columnDefinition = " TEXT ")
     private String preRequisito;
