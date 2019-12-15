@@ -1,4 +1,4 @@
-package enums;
+package com.arpigi.FichaTormentaAPI.enums;
 
 import java.util.HashMap;
 import java.util.Map;

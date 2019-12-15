@@ -22,8 +22,14 @@ public class Talento {
     @Column(columnDefinition = " TEXT ")
     private String descricao;
 
+    @Column(columnDefinition = " TEXT ", name = "beneficio_formadato")
+    private String beneficioFormatado;
+
     @Column(nullable = false, columnDefinition = " TEXT ")
     private String beneficio;
+
+    @Column(columnDefinition = " TEXT ", name = "especial_formatado")
+    private String especialFormatado;
 
     @Column(columnDefinition = " TEXT ")
     private String especial;
@@ -35,6 +41,9 @@ public class Talento {
     @ManyToOne
     @JoinColumn(name = "id_origem", nullable = false)
     private Origem origem;
+
+    @Column(columnDefinition = " TEXT ", name = "pre_requisito_formatado")
+    private String preRequisitoFormatada;
 
     @Column(name = "pre_requisito", columnDefinition = " TEXT ")
     private String preRequisito;
