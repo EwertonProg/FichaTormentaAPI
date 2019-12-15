@@ -22,7 +22,7 @@ public class Talento {
     @Column(columnDefinition = " TEXT ")
     private String descricao;
 
-    @Column(columnDefinition = " TEXT ", name = "beneficio_formadato")
+    @Column(columnDefinition = " TEXT ", name = "beneficio_formatado")
     private String beneficioFormatado;
 
     @Column(nullable = false, columnDefinition = " TEXT ")
