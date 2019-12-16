@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/talento")
@@ -29,6 +30,20 @@ public class TalentoController {
             return ResponseEntity.ok(service.findById(id));
         } catch (TalentoNotFoundException t) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, t.getMessage());
+        }
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity<List<Talento>> findByNomeAndPreRequisito(@RequestParam(name = "nome", required = false) Optional<String> nome,
+                                                                   @RequestParam(name = "preRequisito", required = false) Optional<String> preRequisito) {
+        if(nome.isPresent()&&preRequisito.isPresent()){
+            return ResponseEntity.ok(service.findByNomeContainingAndPreRequisitoContaining(nome.get(),preRequisito.get()));
+        }else if(nome.isPresent()){
+            return ResponseEntity.ok(service.findByNomeContaining(nome.get()));
+        }else if(preRequisito.isPresent()){
+            return ResponseEntity.ok(service.findByPreRequisitoContaining(preRequisito.get()));
+        }else{
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Pelo menos um parametro deve ser informado!");
         }
     }
 
