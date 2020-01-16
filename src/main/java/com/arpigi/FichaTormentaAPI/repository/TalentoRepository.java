@@ -5,8 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface TalentoRepository extends CrudRepository<Talento, Long> {
+public interface TalentoRepository extends CrudRepository<Talento, Long>, TalentoRepositoryCustom {
     List<Talento> findByNomeContainingIgnoreCase(String nome);
     List<Talento> findByPreRequisitoContainingIgnoreCase(String preRequisito);
     List<Talento> findByNomeContainingIgnoreCaseAndPreRequisitoContainingIgnoreCase(String nome, String preRequisito);
+
 }
