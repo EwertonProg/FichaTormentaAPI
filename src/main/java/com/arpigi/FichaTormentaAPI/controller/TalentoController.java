@@ -34,17 +34,13 @@ public class TalentoController {
     }
 
     @GetMapping("/filter")
-    public ResponseEntity<List<Talento>> findByNomeAndPreRequisito(@RequestParam(name = "nome", required = false) Optional<String> nome,
-                                                                   @RequestParam(name = "preRequisito", required = false) Optional<String> preRequisito) {
-        if(nome.isPresent()&&preRequisito.isPresent()){
-            return ResponseEntity.ok(service.findByNomeContainingAndPreRequisitoContaining(nome.get(),preRequisito.get()));
-        }else if(nome.isPresent()){
-            return ResponseEntity.ok(service.findByNomeContaining(nome.get()));
-        }else if(preRequisito.isPresent()){
-            return ResponseEntity.ok(service.findByPreRequisitoContaining(preRequisito.get()));
-        }else{
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Pelo menos um parametro deve ser informado!");
+    public ResponseEntity<List<Talento>> findByNomeAndPreRequisito(@RequestParam(name = "nome", required = false) String nome,
+                                                                   @RequestParam(name = "preRequisito", required = false) String preRequisito) {
+        if(nome != null || preRequisito != null){
+            return ResponseEntity.ok(service.filterTalentoByNomeAndPreRequisito(nome, preRequisito));
         }
+
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Pelo menos um parametro deve ser informado!");
     }
 
     @PostMapping("/add")

@@ -21,16 +21,8 @@ public class TalentoService {
         return talentos;
     }
 
-    public List<Talento> findByNomeContaining(String nome) {
-        return repository.findByNomeContainingIgnoreCase(nome);
-    }
-
-    public List<Talento> findByPreRequisitoContaining(String preRequisito) {
-        return repository.findByPreRequisitoContainingIgnoreCase(preRequisito);
-    }
-
-    public List<Talento> findByNomeContainingAndPreRequisitoContaining(String nome, String preRequisito) {
-        return repository.findByNomeContainingIgnoreCaseAndPreRequisitoContainingIgnoreCase(nome,preRequisito);
+    public List<Talento> filterTalentoByNomeAndPreRequisito(String nome, String preRequisito){
+        return repository.filterByNomeAndPreRequisito(nome,preRequisito);
     }
 
     public Talento findById(Long id) throws TalentoNotFoundException {

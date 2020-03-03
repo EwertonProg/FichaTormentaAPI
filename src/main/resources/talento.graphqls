@@ -1,0 +1,30 @@
+schema {
+    query:Query
+}
+
+type Talento{
+    id: Int!,
+    nome: String!,
+    beneficio: String!,
+    especial: String,
+    grupoTalento: GrupoTalento!,
+    origem: Origem!,
+    preRequisito: String
+}
+
+type Origem{
+    id: Int!,
+    nome: String!,
+    descricao: String
+}
+
+type GrupoTalento{
+    id: Int!,
+    nome: String!,
+    descricao: String
+}
+
+type Query{
+    talentos: [Talento],
+    talento(id: Int): Talento
+}

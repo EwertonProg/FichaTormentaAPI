@@ -1,0 +1,32 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+type GrupoTalento {
+    descricao: String
+    id: Int!
+    nome: String!
+}
+
+type Origem {
+    descricao: String
+    id: Int!
+    nome: String!
+}
+
+type Query {
+    talento(id: Int): Talento
+    talentos: [Talento]
+}
+
+type Talento {
+    beneficio: String!
+    especial: String
+    grupoTalento: GrupoTalento!
+    id: Int!
+    nome: String!
+    origem: Origem!
+    preRequisito: String
+}
