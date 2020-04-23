@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "Default GraphQL Endpoint": {
-        "url": "http://localhost:8080/graphql",
+        "url": "https://radiant-depths-67651.herokuapp.com/graphql",
         "headers": {
           "user-agent": "JS GraphQL"
         },
