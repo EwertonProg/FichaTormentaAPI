@@ -45,8 +45,12 @@ public class TalentoController {
 
     @PostMapping("/add")
     public ResponseEntity<Talento> save(@RequestBody Talento talento) {
-        talento = service.save(talento);
-        return ResponseEntity.ok(talento);
+        try {
+            talento = service.save(talento);
+            return ResponseEntity.ok(talento);
+        }catch (Exception e){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Talento ja cadastrado");
+        }
     }
 
     @PutMapping("/{id}")
